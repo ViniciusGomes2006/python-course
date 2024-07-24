@@ -73,3 +73,13 @@ curl -X DELETE http://localhost:5000/tasks/1
 ```bash
 curl -X GET http://localhost:5000/tasks
 ```
+
+## Run tests
+
+```bash
+cd src/tests
+```
+
+```bash
+pytest test.py -v
+```

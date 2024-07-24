@@ -38,19 +38,18 @@ def getTaskById(id):
 def createTask():
     try:
         data = request.get_json()
-
-        global task_id
-        task_id += 1
-
-        new_task = Task(task_id, data['title'], data['description'])
-        tasksList.append(new_task)
-        response = {
-            'message': 'Task created successfully',
-            'task': new_task.__dict__
-        }
-        return jsonify(response), 201, {'content-type': 'application/json'}
     except KeyError:
         return jsonify({'message': 'Invalid request'}), 400
+    
+    global task_id
+    task_id += 1
+    new_task = Task(task_id, data['title'], data['description'])
+    tasksList.append(new_task)
+    response = {
+        'message': 'Task created successfully',
+        'task': new_task.__dict__
+    }
+    return jsonify(response), 201, {'content-type': 'application/json'}
     
 @app.route('/tasks/<int:id>', methods=['PUT'])
 def updateTask(id):
